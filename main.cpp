@@ -132,7 +132,7 @@ void testMachines(std::ofstream& resultsFile, int& haltingCount, int& nonHalting
 
 int main() {
 	std::ofstream resultsFile;
-	resultsFile.open("machine_results.txt");
+	resultsFile.open("machine_results.csv");
 	resultsFile << "state_count,symbol_count,machine_id,steps_to_halt,halting_probability\n";
 
 	int haltingCount = 0;
@@ -142,8 +142,9 @@ int main() {
 	testMachines<1, kSymbolCount>(resultsFile, haltingCount, nonHaltingCount);
 	testMachines<2, kSymbolCount>(resultsFile, haltingCount, nonHaltingCount);
 	testMachines<3, kSymbolCount>(resultsFile, haltingCount, nonHaltingCount);
+	testMachines<4, kSymbolCount>(resultsFile, haltingCount, nonHaltingCount);
 
-	std::cout << "Number of halting and non-halting machines: (" << haltingCount << ", " << nonHaltingCount << ")" << std::endl;
+	std::cout << "Number of halting and non-halting machines: " << haltingCount << ", " << nonHaltingCount << std::endl;
 
 	double finalHaltingProbability = (100.0 * haltingCount) / (double(haltingCount) + double(nonHaltingCount));
 	std::cout << "Halting probability: " << finalHaltingProbability << std::endl;
